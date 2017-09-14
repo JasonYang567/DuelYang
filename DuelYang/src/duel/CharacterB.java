@@ -3,11 +3,7 @@ package duel;
 public class CharacterB implements Dueler {
 	
 	int health;
-	
-	public CharacterB()
-	{
-		
-	}
+
 	public void taunt()
 	{
 		print("What are you even doing?");
@@ -22,6 +18,6 @@ public class CharacterB implements Dueler {
 	}
 	public int getHP()
 	{
-		return hp; 
+		return health; 
 	}
 }
