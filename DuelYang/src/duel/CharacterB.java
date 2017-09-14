@@ -3,25 +3,21 @@ package duel;
 public class CharacterB implements Dueler {
 	
 	int health;
-	
-	public CharacterB()
-	{
-		
-	}
+
 	public void taunt()
 	{
-		print("What are you even doing?");
+		System.out.println("What are you even doing?");
 	}
 	public String getName()
 	{
 		return "Jason Z";
 	}
-	public void setStartingHp(int hp)
+	public void setStartingHP(int hp)
 	{
 		health = hp;
 	}
 	public int getHP()
 	{
-		return hp; 
+		return health; 
 	}
 }
