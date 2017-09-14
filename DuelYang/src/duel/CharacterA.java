@@ -2,6 +2,7 @@ package duel;
 
 public class CharacterA {
 
+	
 	public void taunt()
 	{
 		printLn("Show me your moves!");
