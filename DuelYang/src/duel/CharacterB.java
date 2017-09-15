@@ -4,7 +4,6 @@ public class CharacterB implements Dueler {
 	
 	int health;
 	double choicePercentage;
-	int choice; 
 	
 	public CharacterB()
 	{
