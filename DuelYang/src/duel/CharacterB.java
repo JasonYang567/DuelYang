@@ -4,14 +4,23 @@ public class CharacterB implements Dueler {
 	
 	int health;
 	double choicePercentage;
+	int tauntchoice;
 	
 	public CharacterB()
 	{
-		
+		tauntchoice = 1; 
 	}
 	public void taunt()
 	{
-		System.out.println("What are you even doing?");
+		if (tauntchoice == 1)
+		{
+			System.out.println("What are you even doing?");
+		}
+		else 
+		{
+			System.out.println("I will destroy you!");
+		}
+		tauntchoice ++;
 	}
 	public String getName()
 	{
