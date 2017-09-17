@@ -26,7 +26,7 @@ public class CharacterA implements Dueler{
 	}
 	
 	public int getAction(Object caller) {
-		if(caller == "duel")
+		if(caller == this)
 		{
 			randomNum = Math.random(); 
 			if(randomNum <= 1/3) {

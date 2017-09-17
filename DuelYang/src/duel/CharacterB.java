@@ -40,7 +40,7 @@ public class CharacterB implements Dueler {
 	}
 	public int getAction( Object caller )
 	{
-		if(caller == "Duel")
+		if(caller == this)
 		{
 			choicePercentage = Math.random(); 
 			if(choicePercentage<=.33)
