@@ -22,7 +22,7 @@ public class CharacterA implements Dueler{
 	}
 	
 	public boolean determineIfOpponentIsFair(Dueler d, int hp) {
-		return false;
+		return true;
 	}
 	
 	public int getAction(Object caller) {
@@ -32,10 +32,14 @@ public class CharacterA implements Dueler{
 			if(randomNum <= 1/3) {
 				return 1; 
 			}
-			else if (randomNum <= 2/3) {
-					return 2; 
+			else {
+				if (randomNum <= 2/3) {
+				return 2; 
+				}
+				else {
+					return 3;
+				}
 			}
-			return 3;
 		}
 	}
 	

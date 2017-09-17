@@ -25,13 +25,13 @@ public class CharacterB implements Dueler {
 	{
 		return this.health; 
 	}
-	public boolean determineIfOpponentIsFair()
+	public boolean determineIfOpponentIsFair(Dueler d, int hp)
 	{
 		return true;
 	}
 	public int getAction( Object caller )
 	{
-		if(caller == "duel")
+		if(caller == "Duel")
 		{
 			choicePercentage = Math.random(); 
 			if(choicePercentage<=.33)
@@ -51,8 +51,12 @@ public class CharacterB implements Dueler {
 			}
 		}
 	}
-	public void hit(characterB x )
+	public void hit(Object caller)
 	{
-		this.health -= 10; 
+		if( caller == "Duel")
+		{
+				this.health -= 10; 
+		}		
 	}
+	
 }
