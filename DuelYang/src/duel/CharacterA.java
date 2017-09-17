@@ -1,22 +1,47 @@
 package duel;
 
-public class CharacterA {
+public class CharacterA implements Dueler{
 
+	int health = 100;
+	double randomNum;
 	
-	public void taunt()
-	{
-		printLn("Show me your moves!");
+	public void taunt() {
+		System.out.println("Show me your moves!");
 	}
-	public String getName()
-	{
-		return "Jason Yang";
+	
+	public String getName() {
+		return "Jason Y";
 	}
-	public void setStartingHp(int hp)
-	{
-
+	
+	public void setStartingHP(int hp) {
+		this.health = hp;
 	}
-	public int getHP()
-	{
-
+	
+	public int getHP() {
+		return this.health;
+	}
+	
+	public boolean determineIfOpponentIsFair(Dueler d, int hp) {
+		return false;
+	}
+	
+	public int getAction(Object caller) {
+		if(caller == "duel")
+		{
+			randomNum = Math.random(); 
+			if(randomNum <= 1/3) {
+				return 1; 
+			}
+			else if (randomNum <= 2/3) {
+					return 2; 
+			}
+			return 3;
+		}
+	}
+	
+	public void hit() {
+		this.health -= 10; 
 	}
 }
+
+
