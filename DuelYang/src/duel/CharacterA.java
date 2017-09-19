@@ -41,6 +41,7 @@ public class CharacterA implements Dueler{
 				}
 			}
 		}
+		return 0;
 	}
 	
 	public void hit() {
