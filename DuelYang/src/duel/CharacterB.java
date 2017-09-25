@@ -2,15 +2,15 @@ package duel;
 
 public class CharacterB implements Dueler {
 	
-	int health;
-	double choicePercentage;
-	int choice; 
-	int tauntchoice;
+	private int health;
+	private double choicePercentage;
+	private int tauntchoice;
+	private boolean loaded;
 	
 	public CharacterB()
 	{
-		tauntchoice = 0; 
-		choice = 0;
+		tauntchoice = 0;
+		loaded = false;
 	}
 	public void taunt()
 	{
@@ -38,37 +38,56 @@ public class CharacterB implements Dueler {
 	}
 	public boolean determineIfOpponentIsFair(Dueler d, int hp)
 	{
-		return true;
+		if(d.getHP() == hp)
+		{
+			return true;
+		}
+		else 
+		{
+			return false; 
+		}
 	}
 	public int getAction( Object caller )
 	{
-		if(caller == "Duel")
+		if(caller instanceof Duel)
 		{
 			choicePercentage = Math.random(); 
-			if(choicePercentage<=.33)
+			if(!loaded)
 			{
-				choice = 0; 
-			}
-			else 
-			{
-				if (choicePercentage>1/3 && choicePercentage<=2/3)
+				if(choicePercentage <= .50)
 				{
-					choice = 1; 
+					loaded = true; 
+					return Duel.LOADING;
 				}
 				else 
 				{
-					choice = 2;
+					return Duel.GUARDING;
+				}				
+			}
+			else 
+			{
+				if(choicePercentage <= .5)
+				{
+					loaded = false; 
+					return Duel.SHOOTING;
+				}
+				else 
+				{
+					return Duel.GUARDING;
 				}
 			}
 		}
-		return choice;
+		else 
+		{
+			return Duel.YEAH_RIGHT;
+		}
 	}
 	public void hit(Object caller)
 	{
-		if( caller == "Duel")
+		if( caller instanceof Duel)
 		{
-				this.health -= 10; 
-		}		
+			this.health -=10;
+		}
 	}
 	
 }

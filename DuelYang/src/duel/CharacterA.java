@@ -2,8 +2,14 @@ package duel;
 
 public class CharacterA implements Dueler{
 
-	int health = 100;
-	double randomNum;
+	private int health = 100;
+	private double randomNum;
+	private boolean loaded;
+	
+	public CharacterA()
+	{
+		loaded = false;
+	}
 	
 	public void taunt() {
 		System.out.println("Show me your moves!");
@@ -22,30 +28,56 @@ public class CharacterA implements Dueler{
 	}
 	
 	public boolean determineIfOpponentIsFair(Dueler d, int hp) {
-		return true;
+		if(d.getHP() == hp)
+		{
+			return true;
+		}
+		else 
+		{
+			return false; 
+		}
 	}
 	
 	public int getAction(Object caller) {
-		if(caller == this)
+		if(caller instanceof Duel)
 		{
 			randomNum = Math.random(); 
-			if(randomNum <= 1/3) {
-				return 1; 
-			}
-			else {
-				if (randomNum <= 2/3) {
-				return 2; 
+			if(!loaded)
+			{
+				if(randomNum <= .50)
+				{
+					loaded = true; 
+					return Duel.LOADING;
 				}
-				else {
-					return 3;
+				else 
+				{
+					return Duel.GUARDING;
+				}				
+			}
+			else 
+			{
+				if(randomNum <= .5)
+				{
+					loaded = false; 
+					return Duel.SHOOTING;
+				}
+				else 
+				{
+					return Duel.GUARDING;
 				}
 			}
 		}
-		return 0;
+		else 
+		{
+			return Duel.YEAH_RIGHT;
+		}
 	}
 	
-	public void hit() {
-		this.health -= 10; 
+	public void hit(Object caller) {
+		if( caller instanceof Duel)
+		{
+			this.health -=10;
+		}
 	}
 }
 
